@@ -1,38 +1,37 @@
 import React from 'react';
 import Link from 'next/link';
-import { SplitLayout, RightSplit, LeftSplit } from './styled';
-import styles from '../../styles/Split.module.css'
+import { SplitLayout, RightSplit, LeftSplit, LeftImg, RightImg, LinkWrapper } from './styled';
 
 export default () => {
     return (
         <SplitLayout>
             <LeftSplit>
-                <div className={styles.introContent}>
+                <LinkWrapper>
                     <Link href={`/profession`}>
                         <div>
-                            <div className={styles.profile}>
-                                <img src="images/profile1.png" alt="engineer"></img>
+                            <div>
+                                <LeftImg></LeftImg>
                             </div>
                             <h1>
                                 <span>Profession</span>
                             </h1>
                         </div>
                     </Link>
-                </div>
+                </LinkWrapper>
             </LeftSplit>
             <RightSplit>
-                <div className={styles.introContent}>
+                <LinkWrapper>
                     <Link href={`/diversion`}>
                         <div>
-                            <div className={styles.profile}>
-                                <img src="images/profile2.png" alt="dj"></img>
+                            <div>
+                                <RightImg></RightImg>
                             </div>
                             <h1>
                                 <span>Diversion</span>
                             </h1>
                         </div>
                     </Link>
-                </div>
+                </LinkWrapper>
             </RightSplit>
         </SplitLayout>
     )
