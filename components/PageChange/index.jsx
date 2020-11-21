@@ -1,14 +1,13 @@
 import React from "react";
+import { PageTransitionWrapper, Loading } from './styled';
 
 const PageChange = (props) => {
     return (
-        <div>
-            <div className="page-transition-wrapper-div">
-                <div className="page-transition-icon-wrapper mb-3">
-                    <img src="/loading.svg" alt="Loading" />
-                </div>
+        <PageTransitionWrapper>
+            <div className="page-transition-loading">
+                <Loading src="/loading.svg" alt="Loading" />
             </div>
-        </div>
+        </PageTransitionWrapper>
     );
 }
 

@@ -8,13 +8,13 @@ export default () => {
         <SplitLayout>
             <LeftSplit>
                 <div className={styles.introContent}>
-                    <Link href={`/engineer`}>
+                    <Link href={`/profession`}>
                         <div>
                             <div className={styles.profile}>
                                 <img src="images/profile1.png" alt="engineer"></img>
                             </div>
                             <h1>
-                                <span>Software Engineer</span>
+                                <span>Profession</span>
                             </h1>
                         </div>
                     </Link>
@@ -22,13 +22,13 @@ export default () => {
             </LeftSplit>
             <RightSplit>
                 <div className={styles.introContent}>
-                    <Link href={`/music`}>
+                    <Link href={`/diversion`}>
                         <div>
                             <div className={styles.profile}>
                                 <img src="images/profile2.png" alt="dj"></img>
                             </div>
                             <h1>
-                                <span>DJ (The Beatlog)</span>
+                                <span>Diversion</span>
                             </h1>
                         </div>
                     </Link>
