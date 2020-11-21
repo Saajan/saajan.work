@@ -43,9 +43,9 @@ export const LeftSplit = styled.div`
 `;
 
 export const LeftImg = styled.div`
-    transition: background 0.8s;
+    transition: box-shadow 0.8s, background 0.8s;
     background: black;
-    box-shadow: 0 70px 63px -60px #000000;
+    box-shadow: none;
     background: url('/images/profile1.png') center center no-repeat;
     background-size: 100%;
     width:150px;
@@ -54,6 +54,7 @@ export const LeftImg = styled.div`
     &:hover{
         background: url('/images/profile1.png') center center no-repeat;
         background-size: 150%;
+        box-shadow: inset 0 0 0 5px white;
     }
     &:after {
         backdrop-filter: grayscale(90%);
@@ -71,9 +72,9 @@ export const LeftImg = styled.div`
 `;
 
 export const RightImg = styled.div`
-    transition: background 0.8s;
+    transition: box-shadow 0.8s, background 0.8s;
     background: black;
-    box-shadow: 0 70px 63px -60px #000000;
+    box-shadow: none;
     background: url('/images/profile2.png') center center no-repeat;
     background-size: 100%;
     width:150px;
@@ -82,6 +83,7 @@ export const RightImg = styled.div`
     &:hover{
         background: url('/images/profile2.png') center center no-repeat;
         background-size: 150%;
+        box-shadow: inset 0 0 0 5px white;
     }
     &:after {
         backdrop-filter: grayscale(90%);
