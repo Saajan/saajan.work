@@ -1,4 +1,4 @@
-import {Wrapper} from './styled';
+import { Wrapper } from './styled';
 
 export default function Layout({ children }) {
     return <Wrapper>{children}</Wrapper>

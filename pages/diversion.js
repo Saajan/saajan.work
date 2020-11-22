@@ -1,7 +1,10 @@
+import Diversion from '../components/Diversion';
+import Layout from '../components/Layout';
 
-export default function Music() {
-    return (
-      <h1>Music</h1>
-    )
-  }
-  
+export default function DiversionPage() {
+  return (
+    <Layout>
+      <Diversion/>
+    </Layout>
+  )
+}
