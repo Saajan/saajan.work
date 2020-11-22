@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { SplitLayout, RightSplit, LeftSplit, LeftImg, RightImg, LinkWrapper } from './styled';
 
-export default () => {
+const Split = () => {
     return (
         <SplitLayout>
             <LeftSplit>
@@ -36,3 +36,5 @@ export default () => {
         </SplitLayout>
     )
 }
+
+export default Split;
