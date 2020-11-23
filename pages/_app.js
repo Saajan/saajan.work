@@ -4,6 +4,7 @@ import App from "next/app";
 import Head from "next/head";
 import Router from "next/router";
 import NProgress from 'nprogress';
+import { AnimatePresence } from 'framer-motion';
 import '../styles/globals.css';
 import 'nprogress/nprogress.css';
 
@@ -38,7 +39,7 @@ export default class MyApp extends App {
     return { pageProps };
   }
   render() {
-    const { Component, pageProps } = this.props;
+    const { Component, pageProps, router } = this.props;
     const Layout = Component.layout || (({ children }) => <>{children}</>);
     return (
       <React.Fragment>
@@ -50,7 +51,9 @@ export default class MyApp extends App {
           <title>Saajan Work</title>
         </Head>
         <Layout>
-          <Component {...pageProps} />
+          <AnimatePresence exitBeforeEnter>
+            <Component {...pageProps} key={router.route} />
+          </AnimatePresence>
         </Layout>
       </React.Fragment>
     );
