@@ -1,6 +1,9 @@
+import React, { Fragment } from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import Timeline from '../components/Timeline';
-
+import { MdHome } from "react-icons/md";
+import { HomeLinker } from './styled';
 import Layout from '../components/Layout';
 let easing = [0.175, 0.85, 0.42, 0.96];
 
@@ -18,6 +21,13 @@ export default function Engineer() {
       <motion.div variants={textVariants}>
         <Layout>
           <section>
+            <Link href={`/`}>
+              <HomeLinker>
+                <Fragment>
+                  <MdHome className="home-icon" />
+                </Fragment>
+              </HomeLinker>
+            </Link>
             <Timeline />
             <div>
               Angular.js, React.js, React-Native, Node.js, Express, Python Flask, Docker ,Puppeteer, D3.js, MongoDB, MySQL ,Microsoft Bot Framework, Grunt.js, Gulp.js,Angular
