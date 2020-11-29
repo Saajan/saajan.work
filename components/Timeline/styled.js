@@ -1,5 +1,6 @@
 
 import styled from 'styled-components';
+import { motion } from "framer-motion"
 
 export const TimeLineWrapper = styled.div`
     background-color:#fff;
@@ -79,7 +80,7 @@ export const TimeLabel = styled.div`
     }
 `;
 
-export const TimeIcon = styled.span`
+export const TimeIcon = styled(motion.span)`
     width: 25px;
 	height: 25px;
 	font-family: "";

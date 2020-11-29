@@ -1,5 +1,5 @@
 import React from 'react';
-import { TimeLine, TimeLineWrapper, Time, TimeLabel, TimeIcon,TimeBox } from './styled';
+import { TimeLine, TimeLineWrapper, Time, TimeLabel, TimeIcon, TimeBox } from './styled';
 
 const Timeline = () => {
     return (
@@ -10,7 +10,10 @@ const Timeline = () => {
                         <span>Apr 2020</span>
                         <span>Present</span>
                     </Time>
-                    <TimeIcon />
+                    <TimeIcon
+                        whileHover={{ scale: 1.5 }}
+                    >
+                    </TimeIcon>
                     <TimeLabel>
                         <h2>Senior Software Engineer</h2>
                         <h3>Conviva</h3>
@@ -33,7 +36,7 @@ const Timeline = () => {
                         <span>Aug 2015</span>
                         <span>Apr 2020</span>
                     </Time>
-                    <TimeIcon />
+                    <TimeIcon whileHover={{ scale: 1.5 }} />
                     <TimeLabel>
                         <h2>Fullstack Engineer</h2>
                         <h3>Penser Analytics</h3>
@@ -62,7 +65,7 @@ const Timeline = () => {
                         <span>Aug 2014</span>
                         <span>Aug 2015</span>
                     </Time>
-                    <TimeIcon />
+                    <TimeIcon whileHover={{ scale: 1.5 }} />
                     <TimeLabel>
                         <h2>Software Engineer</h2>
                         <h3>Sportskeeda</h3>
@@ -94,7 +97,7 @@ const Timeline = () => {
                         <span>Aug 2013</span>
                         <span>Aug 2014</span>
                     </Time>
-                    <TimeIcon />
+                    <TimeIcon whileHover={{ scale: 1.5 }} />
                     <TimeLabel>
                         <h2>Intern</h2>
                         <h3>Applied Cognition Systems</h3>

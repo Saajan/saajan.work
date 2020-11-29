@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Timeline from '../components/Timeline';
 import { MdHome } from "react-icons/md";
 import { HomeLinker } from './styled';
+import TechMap from '../components/TechMap';
 import Layout from '../components/Layout';
 let easing = [0.175, 0.85, 0.42, 0.96];
 
@@ -29,10 +30,8 @@ export default function Engineer() {
               </HomeLinker>
             </Link>
             <Timeline />
-            <div>
-              Angular.js, React.js, React-Native, Node.js, Express, Python Flask, Docker ,Puppeteer, D3.js, MongoDB, MySQL ,Microsoft Bot Framework, Grunt.js, Gulp.js,Angular
-              Styled-Components, Antd, Material, Bootstrap, Semantic-UI, Wordpress, AWS, Heroku, Git, SVN, Jenkins, Nginx.
-				</div>
+            <TechMap>
+            </TechMap>
           </section>
         </Layout>
       </motion.div>
