@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Timeline from '../components/Timeline';
 import { MdHome } from "react-icons/md";
-import { HomeLinker } from './styled';
+import { HomeLinker } from '../styles/styled';
 import TechMap from '../components/TechMap';
 import Layout from '../components/Layout';
 let easing = [0.175, 0.85, 0.42, 0.96];
