@@ -8,6 +8,9 @@ class MyDocument extends Document {
         <Head>
           <meta charSet="utf-8" />
           <meta name="theme-color" content="#000000" />
+          <meta name="keywords" content="saajan,sn,sullia,fullstack,javasccript,react,kvg,pindibana"></meta>
+          <meta name="Description" content="Saajan SN is the fullstack developer specialized in Javascript Eco system. Has working experience of around 7 years in the Web application development.
+          Currently working for Conviva. Saajan is also into Music production and into DJing in free time. Has MSc Tech degree from Manipal University annd also BE degree from KVG College of engineering, Sullia "></meta>
           <link
             href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
             rel="stylesheet"
