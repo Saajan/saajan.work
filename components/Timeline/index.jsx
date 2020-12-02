@@ -24,7 +24,10 @@ const Timeline = () => {
                                 <span>Responsibilities:</span>
                                 <ul>
                                     <li>
-                                        Contributed my frontend development expertise in building the web dashboards.
+                                        Worked on developing real time dashboard.
+                                    </li>
+                                    <li>
+                                        Worked on migration of the application from Django to React.
                                     </li>
                                 </ul>
                             </div>
