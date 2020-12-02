@@ -24,6 +24,8 @@ const home = keyframes`
 
 export const HomeLinker = styled.div`
     position: fixed;
+    top: 0px;
+    left: 0px;
     transform: translate(50%, 50%);
     z-index: 99;
     cursor: pointer;
@@ -35,8 +37,14 @@ export const HomeLinker = styled.div`
 		transition: all .2s cubic-bezier(.36,.07,.57,.99);
         color: #aaa;
         &:hover{ 
-            color: #F24150;
+            color: #fccf0d;
             animation: ${home} 1s cubic-bezier(.36,.07,.57,.99) infinite;
         }
     }
+`;
+
+export const DiversionSection = styled.section`
+    width:100%;
+    display:flex;
+    justify-content:center;
 `;
