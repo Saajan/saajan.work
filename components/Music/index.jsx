@@ -1,5 +1,8 @@
 import React from 'react';
-import { MusicContainer, MusicDescription, SocialLinks, MusicGallery } from './styled';
+import { MusicContainer, MusicDescription, SocialLinks, MusicGallery, TwitterButton, FacebookButton, InstagramButton } from './styled';
+
+import { AiOutlineFacebook,AiOutlineInstagram,AiOutlineTwitter } from 'react-icons/ai';
+
 const Music = () => {
     return (
         <MusicContainer>
@@ -16,21 +19,21 @@ const Music = () => {
 				</div>
             </MusicDescription>
             <SocialLinks>
-                <button className="icon-btn twitter">
+                <TwitterButton className="icon-btn twitter">
                     <a className="link" href="https://twitter.com/" target="_blank">
-                        <i className="fa fa-twitter"></i>
+                        <AiOutlineTwitter/>
                     </a>
-                </button>
-                <button className="icon-btn facebook">
+                </TwitterButton>
+                <FacebookButton className="icon-btn facebook">
                     <a className="link" href="https://www.facebook.com/thebeatlog/" target="_blank">
-                        <i className="fa fa-facebook"></i>
+                        <AiOutlineFacebook/>
                     </a>
-                </button>
-                <button className="icon-btn instagram">
+                </FacebookButton>
+                <InstagramButton className="icon-btn instagram">
                     <a className="link" href="https://www.instagram.com/thebeatlog/" target="_blank">
-                        <i className="fa fa-instagram"></i>
+                        <AiOutlineInstagram/>
                     </a>
-                </button>
+                </InstagramButton>
             </SocialLinks>
             <MusicGallery>
                 <img alt="the beatlog" src="images/music/skylamp-2016.jpg" width="100%" height="auto" />
