@@ -8,7 +8,7 @@ class MyDocument extends Document {
         <Head>
           <meta charSet="utf-8" />
           <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-          <meta name=viewport content="width=device-width, initial-scale=1">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
           <meta name="theme-color" content="#000000" />
           <meta name="keywords" content="saajan,sn,sullia,fullstack,javasccript,react,kvg,pindibana"></meta>
           <meta name="description" content="Saajan SN is the fullstack developer specialized in Javascript Eco system. Has working experience of around 7 years in the Web application development.
