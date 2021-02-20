@@ -46,13 +46,13 @@ export const LeftImg = styled.div`
     transition: box-shadow 0.8s, background 0.8s;
     background: black;
     box-shadow: none;
-    background: url('/images/profile1.png') center center no-repeat;
+    background: url('/images/saajan-sn-1.webp') center center no-repeat;
     background-size: 100%;
     width:150px;
     height:150px;
     border-radius:50%;
     &:hover{
-        background: url('/images/profile1.png') center center no-repeat;
+        background: url('/images/saajan-sn-1.webp') center center no-repeat;
         background-size: 150%;
         box-shadow: inset 0 0 0 5px white;
     }
@@ -75,13 +75,13 @@ export const RightImg = styled.div`
     transition: box-shadow 0.8s, background 0.8s;
     background: black;
     box-shadow: none;
-    background: url('/images/profile2.png') center center no-repeat;
+    background: url('/images/saajan-sn-2.webp') center center no-repeat;
     background-size: 100%;
     width:150px;
     height:150px;
     border-radius:50%;
     &:hover{
-        background: url('/images/profile2.png') center center no-repeat;
+        background: url('/images/saajan-sn-2.webp') center center no-repeat;
         background-size: 150%;
         box-shadow: inset 0 0 0 5px white;
     }
