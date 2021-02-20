@@ -44,10 +44,7 @@ export default class MyApp extends App {
     return (
       <React.Fragment>
         <Head>
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-          />
+          <meta name='viewport' content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover' />
           <title>Saajan SN</title>
         </Head>
         <Layout>
