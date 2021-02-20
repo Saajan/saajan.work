@@ -48,7 +48,7 @@ export default class MyApp extends App {
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
-          <title>Saajan SN Personel Website</title>
+          <title>Saajan SN</title>
         </Head>
         <Layout>
           <AnimatePresence exitBeforeEnter>
