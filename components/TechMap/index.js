@@ -18,6 +18,10 @@ const techList = [{
     label: 'Rust',
     data: [{ x: 2020, y: 1, r: 10 }],
     backgroundColor: 'rgba(242, 65, 80,0.5)',
+},{
+    label: 'ElasticSearch',
+    data: [{ x: 2020, y: 1, r: 30 }],
+    backgroundColor: 'rgba(75,192,192,0.5)',
 }, {
     label: 'Microsoft Bot Framework',
     data: [{ x: 2018, y: 3, r: 70 }],
@@ -40,7 +44,7 @@ const techList = [{
     backgroundColor: 'rgba(75,192,192,0.5)',
 }, {
     label: 'MySQL',
-    data: [{ x: 2014, y: 4, r: 30 }],
+    data: [{ x: 2018, y: 2, r: 30 }],
     backgroundColor: 'rgba(75,192,192,0.5)',
 }, {
     label: 'Grunt.js',
@@ -135,69 +139,81 @@ const libraryList = [
     {
         label: 'D3.js',
         data: [{ x: 2016, y: 3, r: 40 }],
-        backgroundColor: 'rgba(252, 207, 13,0.5)',
+        backgroundColor: 'rgba(75,192,192,0.5)',
     }, {
         label: 'Antd',
         data: [{ x: 2018, y: 3, r: 80 }],
-        backgroundColor: 'rgba(252, 207, 13,0.5)',
+        backgroundColor: 'rgba(75,192,192,0.5)',
 
     }, {
         label: 'Bootstrap',
         data: [{ x: 2014, y: 4, r: 80 }],
-        backgroundColor: 'rgba(252, 207, 13,0.5)',
+        backgroundColor: 'rgba(75,192,192,0.5)',
 
     }, {
         label: 'Semantic-UI',
         data: [{ x: 2015, y: 2, r: 50 }],
-        backgroundColor: 'rgba(252, 207, 13,0.5)',
+        backgroundColor: 'rgba(75,192,192,0.5)',
 
     },
     {
         label: 'Redux-Saga',
         data: [{ x: 2020, y: 2, r: 50 }],
-        backgroundColor: 'rgba(252, 207, 13,0.5)',
+        backgroundColor: 'rgba(242, 65, 80,0.5)',
 
     },
     {
         label: 'Redux Thunk',
         data: [{ x: 2019, y: 1, r: 60 }],
-        backgroundColor: 'rgba(252, 207, 13,0.5)',
+        backgroundColor: 'rgba(242, 65, 80,0.5)',
 
     },
     {
-        label: 'date-fns',
+        label: 'Date-fns',
         data: [{ x: 2019, y: 2, r: 60 }],
         backgroundColor: 'rgba(252, 207, 13,0.5)',
 
     },
     {
-        label: 'material-ui',
+        label: 'Material-UI',
         data: [{ x: 2017, y: 2, r: 60 }],
-        backgroundColor: 'rgba(252, 207, 13,0.5)',
+        backgroundColor: 'rgba(75,192,192,0.5)',
 
     },
     {
-        label: 'native-base',
+        label: 'Native-base',
         data: [{ x: 2019, y: 2, r: 60 }],
-        backgroundColor: 'rgba(252, 207, 13,0.5)',
+        backgroundColor: 'rgba(242, 65, 80,0.5)',
 
     },
     {
-        label: 'react-navigation',
-        data: [{ x: 2019, y: 2, r: 60 }],
-        backgroundColor: 'rgba(252, 207, 13,0.5)',
+        label: 'React-navigation',
+        data: [{ x: 2019, y: 2, r: 80 }],
+        backgroundColor: 'rgba(242, 65, 80,0.5)',
 
     },
     {
         label: 'Chart.js',
         data: [{ x: 2020, y: 1, r: 60 }],
-        backgroundColor: 'rgba(252, 207, 13,0.5)',
+        backgroundColor: 'rgba(75,192,192,0.5)',
 
     },
     {
         label: 'Axios',
         data: [{ x: 2018, y: 2, r: 60 }],
         backgroundColor: 'rgba(252, 207, 13,0.5)',
+
+    },
+    {
+        label: 'Socket.io',
+        data: [{ x: 2017, y: 2, r: 40 }],
+        backgroundColor: 'rgba(252, 207, 13,0.5)',
+
+    },
+    {
+        label: 'Framer Motion',
+        data: [{ x: 2020, y: 1, r: 40 }],
+        backgroundColor: 'rgba(242, 65, 80,0.5)',
 
     },
 ]

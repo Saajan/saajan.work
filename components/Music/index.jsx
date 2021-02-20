@@ -9,13 +9,10 @@ const Music = () => {
             <MusicDescription>
                 <div>
                     Been a vivid follower of trance music scenes from almost 10 years. Its been my dream to make people dance to my tunes ever since.
-                    he first step of that is taken in 2017 when i completed my DJ and music production course from resonance studios.I was mentored by DJ shahil for DJing and Dj Pawas Gupta for music prduction.
+                    The first step of that is taken in 2017 when i completed my DJ and Music Production course from Resonance Studios.I was mentored by DJ shahil for DJing and Dj Pawas Gupta for Music Production.
 				</div>
                 <div>
-                    After the completion of the course, i have collaborated with Jaideep Shetty with the name of "The Beatlog". We gave couple of gigs for new years eve in shakaleshpur. We are planning to produce some tracks for now.
-				</div>
-                <div>
-                    You can stalk us using following links.
+                    After the completion of the course, I have collaborated with Jaideep Shetty to form "The Beatlog". We gave couple of gigs for new years eve in shakaleshpur. We are planning to produce some tracks for now.
 				</div>
             </MusicDescription>
             <SocialLinks>
