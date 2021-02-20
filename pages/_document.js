@@ -7,7 +7,6 @@ class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <meta charSet="utf-8" />
-          <title>Saajan SN</title>
           <meta name='application-name' content='Saajan' />
           <meta name='apple-mobile-web-app-capable' content='yes' />
           <meta name='apple-mobile-web-app-status-bar-style' content='default' />
@@ -15,7 +14,7 @@ class MyDocument extends Document {
           <meta name='format-detection' content='telephone=no' />
           <meta name='mobile-web-app-capable' content='yes' />
           <meta name='theme-color' content='#FFFFFF' />
-          <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+          <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
           <meta name="theme-color" content="#000000" />
           <link rel='manifest' href='/manifest.json' />
           <link rel='shortcut icon' href='/favicon.png' />
