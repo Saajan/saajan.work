@@ -7,7 +7,7 @@ const Split = () => {
         <SplitLayout>
             <LeftSplit>
                 <LinkWrapper>
-                    <Link href={`/profession`}>
+                    <Link href={`/profession`} prefetch>
                         <div>
                             <div>
                                 <LeftImg></LeftImg>
@@ -21,7 +21,7 @@ const Split = () => {
             </LeftSplit>
             <RightSplit>
                 <LinkWrapper>
-                    <Link href={`/diversion`}>
+                    <Link href={`/diversion`} prefetch>
                         <div>
                             <div>
                                 <RightImg></RightImg>
