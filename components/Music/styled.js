@@ -1,18 +1,20 @@
 import styled from 'styled-components';
 
 export const MusicContainer = styled.section`
-    display:flex;
+    display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap:  wrap;
 `;
 
 export const MusicDescription = styled.div`
-    width: 500px;
-
+    flex:5;
+    padding:10%;
 `;
 
 export const SocialLinks = styled.div`
     display: flex;
+    flex:1;
     flex-direction: column;
     margin: 10px;
     button{
@@ -35,7 +37,12 @@ export const SocialLinks = styled.div`
 `;
 
 export const MusicGallery = styled.div`
+    flex:2;
     max-width:500px;
+    width:100%;
+    img{
+        width:100%;
+    }
 `;
 
 export const TwitterButton = styled.button`

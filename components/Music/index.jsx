@@ -1,11 +1,12 @@
 import React from 'react';
+import Image from 'next/image';
 import { MusicContainer, MusicDescription, SocialLinks, MusicGallery, TwitterButton, FacebookButton, InstagramButton } from './styled';
-
 import { AiOutlineFacebook,AiOutlineInstagram,AiOutlineTwitter } from 'react-icons/ai';
 
 const Music = () => {
     return (
         <MusicContainer>
+            
             <MusicDescription>
                 <div>
                     Been a vivid follower of trance music scenes from almost 10 years. Its been my dream to make people dance to my tunes ever since.
@@ -33,7 +34,7 @@ const Music = () => {
                 </InstagramButton>
             </SocialLinks>
             <MusicGallery>
-                <img alt="the beatlog" src="images/music/skylamp-2016.jpg" width="100%" height="auto" />
+                <Image alt="the beatlog" src="/images/music/skylamp-2016.jpg" width="100%" height="auto" />
             </MusicGallery>
         </MusicContainer>
     )
