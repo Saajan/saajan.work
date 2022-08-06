@@ -21,13 +21,13 @@ const Split = () => {
             </LeftSplit>
             <RightSplit>
                 <LinkWrapper>
-                    <Link href={`/diversion`} prefetch>
+                    <Link href={`/personal`} prefetch>
                         <div>
                             <div>
                                 <RightImg></RightImg>
                             </div>
                             <h1>
-                                <span>Diversion</span>
+                                <span>Personal</span>
                             </h1>
                         </div>
                     </Link>
