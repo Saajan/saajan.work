@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { MdHome } from "react-icons/md";
-import Music from '../components/Music';
+import Personal from '../components/Personal';
 import Layout from '../components/Layout';
 import { HomeLinker } from '../styles/styled';
 
@@ -21,7 +21,7 @@ export default function DiversionPage() {
     <motion.div initial="exit" animate="enter" exit="exit">
       <motion.div variants={textVariants}>
         <Layout>
-          <section>
+          <section className="container mx-auto py-20">
             <Link href={`/`}>
               <HomeLinker>
                 <Fragment>
@@ -29,7 +29,7 @@ export default function DiversionPage() {
                 </Fragment>
               </HomeLinker>
             </Link>
-            <Music />
+            <Personal />
           </section>
         </Layout>
       </motion.div>

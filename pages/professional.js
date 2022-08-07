@@ -1,10 +1,9 @@
 import React, { Fragment } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import Timeline from '../components/Timeline';
 import { MdHome } from "react-icons/md";
 import { HomeLinker } from '../styles/styled';
-import TechMap from '../components/TechMap';
+import Professional from '../components/Professional';
 import Layout from '../components/Layout';
 let easing = [0.175, 0.85, 0.42, 0.96];
 
@@ -21,7 +20,7 @@ export default function Engineer() {
     <motion.div initial="exit" animate="enter" exit="exit">
       <motion.div variants={textVariants}>
         <Layout>
-          <section>
+          <section className="container mx-auto py-20">
             <Link href={`/`}>
               <HomeLinker>
                 <Fragment>
@@ -29,9 +28,7 @@ export default function Engineer() {
                 </Fragment>
               </HomeLinker>
             </Link>
-            <Timeline />
-            <TechMap>
-            </TechMap>
+            <Professional />
           </section>
         </Layout>
       </motion.div>

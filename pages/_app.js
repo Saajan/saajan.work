@@ -5,7 +5,7 @@ import Head from "next/head";
 import Router from "next/router";
 import NProgress from 'nprogress';
 import { AnimatePresence } from 'framer-motion';
-import '../styles/globals.css';
+import '../styles/globals.scss';
 import 'nprogress/nprogress.css';
 
 import PageChange from "../components/PageChange";

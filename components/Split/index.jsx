@@ -7,13 +7,13 @@ const Split = () => {
         <SplitLayout>
             <LeftSplit>
                 <LinkWrapper>
-                    <Link href={`/profession`} prefetch>
+                    <Link href={`/professional`} prefetch>
                         <div>
                             <div>
                                 <LeftImg></LeftImg>
                             </div>
                             <h1>
-                                <span>Profession</span>
+                                <span>Professional</span>
                             </h1>
                         </div>
                     </Link>
