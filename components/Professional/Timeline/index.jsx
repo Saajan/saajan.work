@@ -44,7 +44,7 @@ const Timeline = () => {
                         <h2>Fullstack Engineer</h2>
                         <h3>Penser Analytics</h3>
                         <div>
-                            <p>Sherlock is the analytics platform that meets the needs of business and IT. It empowers organization's to make
+                            <p>Sherlock is the analytics platform that meets the needs of business and IT. It empowers organization&apos;s to make
 												sense of large data volumes, get answers to their toughest business questions and build beautiful data visualizations.</p>
                             <div className="res-container">
                                 <span>Responsibilities:</span>
