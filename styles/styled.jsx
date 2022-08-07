@@ -42,9 +42,3 @@ export const HomeLinker = styled.div`
         }
     }
 `;
-
-export const DiversionSection = styled.section`
-    width:100%;
-    display:flex;
-    justify-content:center;
-`;

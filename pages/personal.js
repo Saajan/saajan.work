@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { MdHome } from "react-icons/md";
 import Music from '../components/Music';
 import Layout from '../components/Layout';
-import { HomeLinker,DiversionSection } from '../styles/styled';
+import { HomeLinker } from '../styles/styled';
 
 let easing = [0.175, 0.85, 0.42, 0.96];
 
@@ -21,7 +21,7 @@ export default function DiversionPage() {
     <motion.div initial="exit" animate="enter" exit="exit">
       <motion.div variants={textVariants}>
         <Layout>
-          <DiversionSection>
+          <section>
             <Link href={`/`}>
               <HomeLinker>
                 <Fragment>
@@ -30,7 +30,7 @@ export default function DiversionPage() {
               </HomeLinker>
             </Link>
             <Music />
-          </DiversionSection>
+          </section>
         </Layout>
       </motion.div>
     </motion.div>
