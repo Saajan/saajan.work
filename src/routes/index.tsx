@@ -1,70 +1,131 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { Link, createFileRoute, useNavigate } from '@tanstack/react-router'
+import { useEffect, useState, type MouseEvent } from 'react'
 import { Code2, Heart } from 'lucide-react'
 
 export const Route = createFileRoute('/')({
-  component: Index,
+  component: Home,
 })
 
-function Index() {
+function Home() {
+  const navigate = useNavigate()
+  const [expandingPanel, setExpandingPanel] = useState<'professional' | 'personal' | null>(null)
+  const [collapsingPanel, setCollapsingPanel] = useState<'professional' | 'personal' | null>(null)
+  const [slidingPanel, setSlidingPanel] = useState<'professional' | 'personal' | null>(null)
+  const [isReturning, setIsReturning] = useState(false)
+  const [isReturnReveal, setIsReturnReveal] = useState(false)
+
+  const resetHomeState = () => {
+    setExpandingPanel(null)
+    setSlidingPanel(null)
+    setCollapsingPanel(null)
+    setIsReturning(false)
+    setIsReturnReveal(false)
+  }
+
+  useEffect(() => {
+    resetHomeState()
+    const panel = sessionStorage.getItem('home-panel-close')
+    if (panel === 'professional' || panel === 'personal') {
+      setCollapsingPanel(panel)
+      setIsReturning(true)
+      const revealTimer = window.setTimeout(() => {
+        setIsReturnReveal(true)
+      }, 140)
+      const resetTimer = window.setTimeout(() => {
+        resetHomeState()
+      }, 860)
+      sessionStorage.removeItem('home-panel-close')
+      return () => {
+        window.clearTimeout(revealTimer)
+        window.clearTimeout(resetTimer)
+      }
+    }
+    return undefined
+  }, [])
+
+  useEffect(() => {
+    const onPageShow = () => resetHomeState()
+    window.addEventListener('pageshow', onPageShow)
+    return () => window.removeEventListener('pageshow', onPageShow)
+  }, [])
+
+  const handlePanelClick = (panel: 'professional' | 'personal', to: '/professional' | '/personal') =>
+    (event: MouseEvent) => {
+      event.preventDefault()
+      if (expandingPanel || slidingPanel) return
+      setExpandingPanel(panel)
+      setSlidingPanel(panel)
+      window.setTimeout(() => navigate({ to }), 560)
+    }
+
+  const professionalClasses = [
+    'home-card',
+    'home-card-professional',
+    expandingPanel === 'professional' ? 'is-expanding' : '',
+    expandingPanel === 'personal' ? 'is-fading' : '',
+    collapsingPanel === 'professional' ? 'is-collapsing' : '',
+    collapsingPanel === 'personal' ? 'is-fading' : '',
+  ]
+    .filter(Boolean)
+    .join(' ')
+
+  const personalClasses = [
+    'home-card',
+    'home-card-personal',
+    expandingPanel === 'personal' ? 'is-expanding' : '',
+    expandingPanel === 'professional' ? 'is-fading' : '',
+    collapsingPanel === 'personal' ? 'is-collapsing' : '',
+    collapsingPanel === 'professional' ? 'is-fading' : '',
+  ]
+    .filter(Boolean)
+    .join(' ')
+
   return (
-    <main className="min-h-screen flex">
-      <a href="/professional" className="flex-1 relative group cursor-pointer overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900" />
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,_rgba(250,204,21,0.15),transparent_50%)]" />
+    <main className={`home-layout ${slidingPanel ? 'is-sliding' : ''} ${isReturning ? 'is-returning' : ''} ${isReturnReveal ? 'is-return-reveal' : ''}`}>
+      <Link to="/professional" className={professionalClasses} onClick={handlePanelClick('professional', '/professional')}>
+        <div className="home-card-glow" />
+        <div className="home-corner home-corner-tl" />
+        <div className="home-corner home-corner-br" />
+        <div className="home-card-content">
+          <div className="home-icon-shell">
+            <Code2 className="home-icon" />
+          </div>
+          <h1>Professional</h1>
+          <p>Skills, experience and projects</p>
         </div>
-        
-        <div className="relative h-full flex flex-col justify-center items-center p-12">
-          <div className="text-center">
-            <div className="mb-6 inline-flex p-4 rounded-2xl bg-zinc-800/50 border border-zinc-700/50">
-              <Code2 className="w-10 h-10 text-yellow-400" />
-            </div>
-            
-            <h1 className="text-5xl md:text-7xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-yellow-400 via-amber-500 to-orange-500 bg-clip-text text-transparent">
-                Professional
-              </span>
-            </h1>
-            
-            <p className="text-zinc-400 text-lg md:text-xl max-w-md mx-auto">
-              Skills, experience & projects
-            </p>
+      </Link>
+
+      <Link to="/personal" className={personalClasses} onClick={handlePanelClick('personal', '/personal')}>
+        <div className="home-card-glow" />
+        <div className="home-corner home-corner-tr" />
+        <div className="home-corner home-corner-bl" />
+        <div className="home-card-content">
+          <div className="home-icon-shell">
+            <Heart className="home-icon" />
+          </div>
+          <h1>Personal</h1>
+          <p>Music, life and more</p>
+        </div>
+      </Link>
+      <div className="home-divider" />
+      {slidingPanel === 'professional' ? (
+        <div className="home-slide home-slide-professional" aria-hidden="true">
+          <div className="home-slide-content">
+            <p>Professional</p>
+            <h2>Building impactful software</h2>
+            <span>Skills, experience and projects</span>
           </div>
         </div>
-
-        <div className="absolute top-8 left-8 w-20 h-20 border-l-2 border-t-2 border-yellow-400/30 rounded-tl-lg" />
-        <div className="absolute bottom-8 right-8 w-20 h-20 border-r-2 border-b-2 border-yellow-400/30 rounded-br-lg" />
-      </a>
-
-      <a href="/personal" className="flex-1 relative group cursor-pointer overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900" />
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,_rgba(236,72,153,0.15),transparent_50%)]" />
-        </div>
-        
-        <div className="relative h-full flex flex-col justify-center items-center p-12">
-          <div className="text-center">
-            <div className="mb-6 inline-flex p-4 rounded-2xl bg-zinc-800/50 border border-zinc-700/50">
-              <Heart className="w-10 h-10 text-pink-500" />
-            </div>
-            
-            <h1 className="text-5xl md:text-7xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-pink-400 via-rose-500 to-red-400 bg-clip-text text-transparent">
-                Personal
-              </span>
-            </h1>
-            
-            <p className="text-zinc-400 text-lg md:text-xl max-w-md mx-auto">
-              Music, life & more
-            </p>
+      ) : null}
+      {slidingPanel === 'personal' ? (
+        <div className="home-slide home-slide-personal" aria-hidden="true">
+          <div className="home-slide-content">
+            <p>Personal</p>
+            <h2>Beyond the code</h2>
+            <span>Music, life and more</span>
           </div>
         </div>
-
-        <div className="absolute top-8 right-8 w-20 h-20 border-r-2 border-t-2 border-pink-500/30 rounded-tr-lg" />
-        <div className="absolute bottom-8 left-8 w-20 h-20 border-l-2 border-b-2 border-pink-500/30 rounded-bl-lg" />
-      </a>
-
-      <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-zinc-700 to-transparent" />
+      ) : null}
     </main>
   )
 }
