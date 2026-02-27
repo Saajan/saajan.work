@@ -6,16 +6,7 @@ import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 export default defineConfig({
   plugins: [
     tsconfigPaths({ projects: ['./tsconfig.json'] }),
-    tanstackStart({
-      prerender: {
-        enabled: true,
-      },
-      pages: [
-        { path: '/' },
-        { path: '/professional' },
-        { path: '/personal' },
-      ],
-    }),
+    tanstackStart(),
     viteReact(),
   ],
 })
