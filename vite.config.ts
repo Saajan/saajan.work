@@ -9,4 +9,17 @@ export default defineConfig({
     tanstackStart(),
     viteReact(),
   ],
+  build: {
+    rollupOptions: {
+      onwarn(warning, warn) {
+        if (
+          warning.code === 'UNUSED_EXTERNAL_IMPORT' &&
+          warning.ids?.some(id => id.includes('node_modules'))
+        ) {
+          return
+        }
+        warn(warning)
+      },
+    },
+  },
 })
