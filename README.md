@@ -1,9 +1,6 @@
-# saajan.work — Personal Website & Portfolio
+# Personal Website & Portfolio
 
 This repository contains the source code for Saajan's personal website, engineering blog, and portfolio.
-
-## About the Project
-A premium, modern portfolio featuring responsive layouts, a dark-mode glassmorphic interface, dynamic glowing auroras, and an interactive simulated music player.
 
 ## Built With
 The website is engineered using the following modern web stack:
