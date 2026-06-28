@@ -34,9 +34,9 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
     res.statusCode = webResponse.status
     res.statusMessage = webResponse.statusText
 
-    webResponse.headers.forEach((value, key) => {
+    webResponse.headers.forEach((value: string, key: string) => {
       if (key.toLowerCase() === 'set-cookie') {
-        const cookies = webResponse.headers.getSetCookie()
+        const cookies = (webResponse.headers as any).getSetCookie?.()
         res.setHeader(key, cookies)
       } else {
         res.setHeader(key, value)
