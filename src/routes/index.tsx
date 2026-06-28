@@ -1,5 +1,5 @@
 import { Link, createFileRoute, useNavigate } from '@tanstack/react-router'
-import { useEffect, useState, type MouseEvent } from 'react'
+import { useState, type MouseEvent } from 'react'
 import { Code2, Heart } from 'lucide-react'
 
 export const Route = createFileRoute('/')({
@@ -9,45 +9,7 @@ export const Route = createFileRoute('/')({
 function Home() {
   const navigate = useNavigate()
   const [expandingPanel, setExpandingPanel] = useState<'professional' | 'personal' | null>(null)
-  const [collapsingPanel, setCollapsingPanel] = useState<'professional' | 'personal' | null>(null)
   const [slidingPanel, setSlidingPanel] = useState<'professional' | 'personal' | null>(null)
-  const [isReturning, setIsReturning] = useState(false)
-  const [isReturnReveal, setIsReturnReveal] = useState(false)
-
-  const resetHomeState = () => {
-    setExpandingPanel(null)
-    setSlidingPanel(null)
-    setCollapsingPanel(null)
-    setIsReturning(false)
-    setIsReturnReveal(false)
-  }
-
-  useEffect(() => {
-    resetHomeState()
-    const panel = sessionStorage.getItem('home-panel-close')
-    if (panel === 'professional' || panel === 'personal') {
-      setCollapsingPanel(panel)
-      setIsReturning(true)
-      const revealTimer = window.setTimeout(() => {
-        setIsReturnReveal(true)
-      }, 140)
-      const resetTimer = window.setTimeout(() => {
-        resetHomeState()
-      }, 860)
-      sessionStorage.removeItem('home-panel-close')
-      return () => {
-        window.clearTimeout(revealTimer)
-        window.clearTimeout(resetTimer)
-      }
-    }
-    return undefined
-  }, [])
-
-  useEffect(() => {
-    const onPageShow = () => resetHomeState()
-    window.addEventListener('pageshow', onPageShow)
-    return () => window.removeEventListener('pageshow', onPageShow)
-  }, [])
 
   const handlePanelClick = (panel: 'professional' | 'personal', to: '/professional' | '/personal') =>
     (event: MouseEvent) => {
@@ -63,8 +25,6 @@ function Home() {
     'home-card-professional',
     expandingPanel === 'professional' ? 'is-expanding' : '',
     expandingPanel === 'personal' ? 'is-fading' : '',
-    collapsingPanel === 'professional' ? 'is-collapsing' : '',
-    collapsingPanel === 'personal' ? 'is-fading' : '',
   ]
     .filter(Boolean)
     .join(' ')
@@ -74,14 +34,12 @@ function Home() {
     'home-card-personal',
     expandingPanel === 'personal' ? 'is-expanding' : '',
     expandingPanel === 'professional' ? 'is-fading' : '',
-    collapsingPanel === 'personal' ? 'is-collapsing' : '',
-    collapsingPanel === 'professional' ? 'is-fading' : '',
   ]
     .filter(Boolean)
     .join(' ')
 
   return (
-    <main className={`home-layout ${slidingPanel ? 'is-sliding' : ''} ${isReturning ? 'is-returning' : ''} ${isReturnReveal ? 'is-return-reveal' : ''}`}>
+    <main className={`home-layout ${slidingPanel ? 'is-sliding' : ''}`}>
       <Link to="/professional" className={professionalClasses} onClick={handlePanelClick('professional', '/professional')}>
         <div className="home-card-glow" />
         <div className="home-corner home-corner-tl" />

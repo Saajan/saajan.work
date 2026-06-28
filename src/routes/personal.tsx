@@ -1,83 +1,103 @@
-import { createFileRoute, useNavigate } from '@tanstack/react-router'
-import { useState, type MouseEvent } from 'react'
-import { ArrowLeft, Facebook, Heart, Instagram, Music, Twitter } from 'lucide-react'
+import { createFileRoute } from '@tanstack/react-router'
+import { Facebook, Heart, Instagram, Music, Twitter, MapPin } from 'lucide-react'
+import { Navbar } from '../components/Navbar'
+import { Footer } from '../components/Footer'
+import { MusicPlayer } from '../components/MusicPlayer'
 
 export const Route = createFileRoute('/personal')({
   component: Personal,
 })
 
 function Personal() {
-  const navigate = useNavigate()
-  const [isLeaving, setIsLeaving] = useState(false)
-
-  const handleBack = (event: MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault()
-    if (isLeaving) return
-    setIsLeaving(true)
-    sessionStorage.setItem('home-panel-close', 'personal')
-    window.setTimeout(() => navigate({ to: '/' }), 360)
-  }
-
   return (
-    <main className={`page page-personal ${isLeaving ? 'is-leaving' : ''}`}>
-      <nav className="top-nav">
-        <a href="/" className="back-link" onClick={handleBack}>
-          <ArrowLeft size={18} />
-          Back
-        </a>
-        <p className="brand">
-          <span>saajan.</span>
-          <strong>work</strong>
-        </p>
-      </nav>
+    <>
+      <Navbar />
+      <main className="page page-personal">
+        <section className="hero-section glass-panel">
+          <div className="section-glow-glow pro-glow" />
+          <p className="eyebrow">
+            <Heart size={15} /> Personal
+          </p>
+          <h1>
+            Beyond the <span>code</span>
+          </h1>
+          <p className="lead-text">
+            When I am not designing scalable software and building AI systems, I spend my time exploring music, DJing, and producing electronic dance music.
+          </p>
+        </section>
 
-      <section className="hero-section">
-        <p className="eyebrow"><Heart size={16} /> Personal</p>
-        <h1>
-          Beyond the <span>code</span>
-        </h1>
-        <p>
-          When I am not building software, I am making music. Electronic dance music enthusiast, DJ,
-          and music producer.
-        </p>
-      </section>
-
-      <section className="content-section">
-        <h2><Music size={18} /> Music Production</h2>
-        <article className="feature-card">
-          <div className="feature-media">
-            <Music size={54} />
+        <section className="content-section glass-panel">
+          <div className="section-head">
+            <h2>
+              <Music size={18} /> Music Production
+            </h2>
+            <span className="project-badge">Side Project</span>
           </div>
-          <div className="feature-copy">
-            <h3>The Beatlog</h3>
-            <p>
-              Picked up DJing as a hobby and completed DJing and music production coursework at
-              <strong> Resonance Studios</strong> in 2017.
-            </p>
-            <p>
-              Mentored by <strong>DJ Shahil</strong> (DJing) and <strong>DJ Pawas Gupta</strong> (music production).
-              Collaborated with <strong>Jaideep Shetty</strong> to form The Beatlog.
-            </p>
-            <p className="muted">Played a couple of New Year&apos;s Eve gigs in Shakaleshpur. More updates soon.</p>
-            <div className="social-links">
-              <a href="https://twitter.com/" target="_blank" rel="noreferrer" aria-label="Twitter">
-                <Twitter size={18} />
-              </a>
-              <a href="https://www.facebook.com/thebeatlog/" target="_blank" rel="noreferrer" aria-label="Facebook">
-                <Facebook size={18} />
-              </a>
-              <a href="https://www.instagram.com/thebeatlog/" target="_blank" rel="noreferrer" aria-label="Instagram">
-                <Instagram size={18} />
-              </a>
-            </div>
-          </div>
-        </article>
-      </section>
 
-      <section className="content-section">
-        <h2>Based in</h2>
-        <p>Sullia, Karnataka, India</p>
-      </section>
-    </main>
+          <div className="personal-showcase-grid">
+            {/* Real simulated player widget */}
+            <MusicPlayer />
+
+            <article className="feature-copy">
+              <h3>The Beatlog</h3>
+              <p>
+                Picked up DJing as a creative outlet and completed coursework in DJing and electronic music production at <strong>Resonance Studios</strong> in 2017.
+              </p>
+              <p>
+                Mentored by industry veterans <strong>DJ Shahil</strong> (DJing) and <strong>DJ Pawas Gupta</strong> (music production). Later collaborated with <strong>Jaideep Shetty</strong> to form the duo <strong>The Beatlog</strong>.
+              </p>
+              <div className="gig-history-card">
+                <span className="gig-dot" />
+                <p>Played several New Year's Eve sets in Shakaleshpur. Producing melodic techno &amp; progressive house mixes.</p>
+              </div>
+
+              <div className="beatlog-social-connect">
+                <span className="social-label">Follow The Beatlog:</span>
+                <div className="social-links-row">
+                  <a
+                    href="https://twitter.com/"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="Twitter"
+                    className="artist-social-link twitter"
+                  >
+                    <Twitter size={16} />
+                  </a>
+                  <a
+                    href="https://www.facebook.com/thebeatlog/"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="Facebook"
+                    className="artist-social-link facebook"
+                  >
+                    <Facebook size={16} />
+                  </a>
+                  <a
+                    href="https://www.instagram.com/thebeatlog/"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="Instagram"
+                    className="artist-social-link instagram"
+                  >
+                    <Instagram size={16} />
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section className="content-section location-section glass-panel">
+          <h2>
+            <MapPin size={18} /> Based In
+          </h2>
+          <div className="location-info">
+            <h3>Sullia, Karnataka, India</h3>
+            <p className="muted">An energetic coastal region surrounded by lush Western Ghats forests.</p>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </>
   )
 }

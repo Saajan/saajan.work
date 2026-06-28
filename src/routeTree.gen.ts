@@ -12,6 +12,8 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as ProfessionalRouteImport } from './routes/professional'
 import { Route as PersonalRouteImport } from './routes/personal'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProfessionalBlogIndexRouteImport } from './routes/professional/blog/index'
+import { Route as ProfessionalBlogBlogidRouteImport } from './routes/professional/blog/$blogid'
 
 const ProfessionalRoute = ProfessionalRouteImport.update({
   id: '/professional',
@@ -28,35 +30,67 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProfessionalBlogIndexRoute = ProfessionalBlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => ProfessionalRoute,
+} as any)
+const ProfessionalBlogBlogidRoute = ProfessionalBlogBlogidRouteImport.update({
+  id: '/blog/$blogid',
+  path: '/blog/$blogid',
+  getParentRoute: () => ProfessionalRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/personal': typeof PersonalRoute
-  '/professional': typeof ProfessionalRoute
+  '/professional': typeof ProfessionalRouteWithChildren
+  '/professional/blog/$blogid': typeof ProfessionalBlogBlogidRoute
+  '/professional/blog/': typeof ProfessionalBlogIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/personal': typeof PersonalRoute
-  '/professional': typeof ProfessionalRoute
+  '/professional': typeof ProfessionalRouteWithChildren
+  '/professional/blog/$blogid': typeof ProfessionalBlogBlogidRoute
+  '/professional/blog': typeof ProfessionalBlogIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/personal': typeof PersonalRoute
-  '/professional': typeof ProfessionalRoute
+  '/professional': typeof ProfessionalRouteWithChildren
+  '/professional/blog/$blogid': typeof ProfessionalBlogBlogidRoute
+  '/professional/blog/': typeof ProfessionalBlogIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/personal' | '/professional'
+  fullPaths:
+    | '/'
+    | '/personal'
+    | '/professional'
+    | '/professional/blog/$blogid'
+    | '/professional/blog/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/personal' | '/professional'
-  id: '__root__' | '/' | '/personal' | '/professional'
+  to:
+    | '/'
+    | '/personal'
+    | '/professional'
+    | '/professional/blog/$blogid'
+    | '/professional/blog'
+  id:
+    | '__root__'
+    | '/'
+    | '/personal'
+    | '/professional'
+    | '/professional/blog/$blogid'
+    | '/professional/blog/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   PersonalRoute: typeof PersonalRoute
-  ProfessionalRoute: typeof ProfessionalRoute
+  ProfessionalRoute: typeof ProfessionalRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -82,13 +116,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/professional/blog/': {
+      id: '/professional/blog/'
+      path: '/blog'
+      fullPath: '/professional/blog/'
+      preLoaderRoute: typeof ProfessionalBlogIndexRouteImport
+      parentRoute: typeof ProfessionalRoute
+    }
+    '/professional/blog/$blogid': {
+      id: '/professional/blog/$blogid'
+      path: '/blog/$blogid'
+      fullPath: '/professional/blog/$blogid'
+      preLoaderRoute: typeof ProfessionalBlogBlogidRouteImport
+      parentRoute: typeof ProfessionalRoute
+    }
   }
 }
+
+interface ProfessionalRouteChildren {
+  ProfessionalBlogBlogidRoute: typeof ProfessionalBlogBlogidRoute
+  ProfessionalBlogIndexRoute: typeof ProfessionalBlogIndexRoute
+}
+
+const ProfessionalRouteChildren: ProfessionalRouteChildren = {
+  ProfessionalBlogBlogidRoute: ProfessionalBlogBlogidRoute,
+  ProfessionalBlogIndexRoute: ProfessionalBlogIndexRoute,
+}
+
+const ProfessionalRouteWithChildren = ProfessionalRoute._addFileChildren(
+  ProfessionalRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   PersonalRoute: PersonalRoute,
-  ProfessionalRoute: ProfessionalRoute,
+  ProfessionalRoute: ProfessionalRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

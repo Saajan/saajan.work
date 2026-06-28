@@ -1,19 +1,33 @@
-import { createFileRoute, useNavigate } from '@tanstack/react-router'
-import { useState, type MouseEvent } from 'react'
-import { ArrowLeft, Briefcase, Calendar, Code2, Layers, Sparkles } from 'lucide-react'
+import { Link, Outlet, createFileRoute, useRouterState } from '@tanstack/react-router'
+import { BookOpen, Briefcase, Calendar, Code2, Layers, Mail, ArrowRight } from 'lucide-react'
+import { Navbar } from '../components/Navbar'
+import { Footer } from '../components/Footer'
 
 export const Route = createFileRoute('/professional')({
   component: Professional,
 })
 
-const skills = [
-  'React.js', 'Next.js', 'Node.js', 'Express', 'GraphQL',
-  'TypeScript', 'JavaScript', 'Angular.js', 'Python', 'Django',
-  'MongoDB', 'MySQL', 'ElasticSearch', 'PostgreSQL',
-  'AWS', 'Docker', 'Kubernetes', 'Nginx', 'Git',
-  'Puppeteer', 'Socket.io', 'D3.js', 'Chart.js',
-  'Material-UI', 'Styled-Components', 'Sass', 'Tailwind',
-  'React-Native', 'PWA', 'LLMs', 'AI/ML', 'RAG',
+const skillCategories = [
+  {
+    title: 'AI & Machine Learning',
+    description: 'Agentic workflows, retrieval systems, and predictive models',
+    skills: ['LLMs', 'RAG', 'AI/ML', 'Python', 'Django'],
+  },
+  {
+    title: 'Frontend Architecture',
+    description: 'Interactive interfaces, data visualizations, and state systems',
+    skills: ['React.js', 'Next.js', 'TypeScript', 'JavaScript', 'D3.js', 'Chart.js', 'Tailwind', 'Sass', 'PWA', 'Material-UI', 'Angular.js'],
+  },
+  {
+    title: 'Backend & Data Systems',
+    description: 'High-throughput APIs, databases, and microservices',
+    skills: ['Node.js', 'Express', 'GraphQL', 'PostgreSQL', 'MongoDB', 'MySQL', 'ElasticSearch', 'Socket.io'],
+  },
+  {
+    title: 'DevOps & Tooling',
+    description: 'Containerization, cloud infrastructure, and deployment pipelines',
+    skills: ['AWS', 'Docker', 'Kubernetes', 'Nginx', 'Git', 'Puppeteer', 'React-Native'],
+  },
 ]
 
 const timeline = [
@@ -21,112 +35,150 @@ const timeline = [
     year: '2024 - Present',
     role: 'Staff Engineer',
     company: 'Conviva',
-    description: 'Leading AI initiatives with LLM features, RAG pipelines, and agentic systems for streaming media intelligence.',
+    description: 'Leading AI initiatives with LLM features, advanced RAG pipelines, and orchestrating multi-agent systems for real-time streaming intelligence.',
+    tags: ['AI Agents', 'LLMs', 'RAG', 'System Design'],
   },
   {
     year: '2020 - 2024',
     role: 'Senior Software Engineer',
     company: 'Conviva',
-    description: 'Built real-time dashboards, led migration from Django to React, and contributed to core platform development.',
+    description: 'Architected critical real-time observability dashboards. Led global migration from Django legacy stacks to modern React systems, optimizing render speeds by 40%.',
+    tags: ['React', 'TypeScript', 'Django', 'Performance'],
   },
   {
     year: '2015 - 2020',
     role: 'Fullstack Engineer',
     company: 'Penser Analytics',
-    description: 'Built dashboard products, developed a Bot Framework chatbot, and created API frameworks using Node.js and GraphQL.',
+    description: 'Designed and implemented end-to-end data products, built an intelligent chatbot assistant framework, and built high-performance Node.js GraphQL APIs.',
+    tags: ['Node.js', 'GraphQL', 'Chatbots', 'Databases'],
   },
   {
     year: '2014 - 2015',
     role: 'Software Engineer',
     company: 'Sportskeeda',
-    description: 'Created micro-sites for 30 sports and built React.js live scoreboards for football and cricket.',
+    description: 'Created dynamic micro-sites serving millions of sports fans. Developed optimized live scoreboard widgets for Football and Cricket during high-traffic tournaments.',
+    tags: ['React.js', 'Realtime Data', 'High-Traffic Web'],
   },
   {
     year: '2013 - 2014',
-    role: 'Intern',
+    role: 'Software Engineer Intern',
     company: 'Applied Cognition Systems',
-    description: 'Built a SPA framework in vanilla JavaScript with HTML5 APIs including IndexedDB, WebSockets, and Web Workers.',
+    description: 'Researched single-page application frameworks using pure Vanilla JavaScript, utilizing local database stores (IndexedDB) and asynchronous Web Workers.',
+    tags: ['Vanilla JS', 'WebSockets', 'Web Workers', 'IndexedDB'],
   },
 ]
 
 function Professional() {
-  const navigate = useNavigate()
-  const [isLeaving, setIsLeaving] = useState(false)
-
-  const handleBack = (event: MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault()
-    if (isLeaving) return
-    setIsLeaving(true)
-    sessionStorage.setItem('home-panel-close', 'professional')
-    window.setTimeout(() => navigate({ to: '/' }), 360)
-  }
+  const pathname = useRouterState({ select: (state) => state.location.pathname })
+  const isInBlog = pathname.startsWith('/professional/blog')
 
   return (
-    <main className={`page page-professional ${isLeaving ? 'is-leaving' : ''}`}>
-      <nav className="top-nav">
-        <a href="/" className="back-link" onClick={handleBack}>
-          <ArrowLeft size={18} />
-          Back
-        </a>
-        <p className="brand">
-          <span>saajan.</span>
-          <strong>work</strong>
-        </p>
-      </nav>
-
-      <section className="hero-section">
-        <p className="eyebrow"><Code2 size={16} /> Professional</p>
-        <h1>
-          Building <span>impactful</span> software
-        </h1>
-        <p>
-          Staff Engineer with <strong>10+ years</strong> in the JavaScript ecosystem. Currently leading AI
-          initiatives at Conviva with LLM-powered features, RAG pipelines, and agentic AI systems.
-        </p>
-      </section>
-
-      <section className="content-section">
-        <p className="pill"><Sparkles size={14} /> AI &amp; Machine Learning</p>
-      </section>
-
-      <section className="content-section">
-        <h2><Layers size={18} /> Tech Stack</h2>
-        <div className="chips">
-          {skills.map((skill) => (
-            <span key={skill}>{skill}</span>
-          ))}
-        </div>
-      </section>
-
-      <section className="content-section">
-        <h2><Calendar size={18} /> Journey</h2>
-        <div className="timeline">
-          {timeline.map((item) => (
-            <article key={`${item.year}-${item.role}`}>
-              <p>{item.year}</p>
-              <div>
-                <h3>{item.role}</h3>
-                <h4>{item.company}</h4>
-                <p>{item.description}</p>
+    <>
+      <Navbar />
+      <main className={`page page-professional ${isInBlog ? 'page-blog' : ''}`}>
+        {isInBlog ? (
+          <div className="blog-outlet-wrapper">
+            <Outlet />
+          </div>
+        ) : (
+          <>
+            <section className="hero-section glass-panel">
+              <div className="section-glow-glow pro-glow" />
+              <p className="eyebrow">
+                <Code2 size={15} /> Professional
+              </p>
+              <h1>
+                Building <span>impactful</span> software
+              </h1>
+              <p className="lead-text">
+                Staff Engineer with <strong>10+ years</strong> of hands-on experience in the web ecosystem. 
+                Currently designing AI-driven analytics, advanced search pipelines, and agentic integrations at Conviva.
+              </p>
+              <div className="hero-actions">
+                <a href="mailto:contact@saajan.work" className="primary-cta-btn">
+                  <Mail size={16} /> Get in Touch
+                </a>
+                <Link to="/professional/blog" className="secondary-cta-btn">
+                  <BookOpen size={16} /> Read Engineering Blog <ArrowRight size={14} className="hover-arrow" />
+                </Link>
               </div>
-            </article>
-          ))}
-        </div>
-      </section>
+            </section>
 
-      <section className="content-section">
-        <h2><Briefcase size={18} /> Education</h2>
-        <div className="education-grid">
-          <article>
-            <h3>MSc Tech</h3>
-            <p>Manipal University</p>
-          </article>
-          <article>
-            <h3>BE</h3>
-            <p>KVG College of Engineering, Sullia</p>
-          </article>
-        </div>
-      </section>
-    </main>
+            <section className="content-section glass-panel">
+              <h2>
+                <Layers size={18} /> Technical Capabilities
+              </h2>
+              <div className="skills-categorized-grid">
+                {skillCategories.map((cat) => (
+                  <div key={cat.title} className="skill-cat-card">
+                    <h4>{cat.title}</h4>
+                    <p className="skill-cat-desc">{cat.description}</p>
+                    <div className="chips">
+                      {cat.skills.map((skill) => (
+                        <span key={skill} className="skill-chip">
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            <section className="content-section glass-panel">
+              <h2>
+                <Calendar size={18} /> Career Journey
+              </h2>
+              <div className="professional-timeline">
+                {timeline.map((item, index) => (
+                  <article key={`${item.year}-${item.role}`} className="timeline-node">
+                    <div className="timeline-spine">
+                      <div className="timeline-dot">
+                        <span className="dot-pulse" />
+                      </div>
+                      {index < timeline.length - 1 && <div className="timeline-line" />}
+                    </div>
+                    <div className="timeline-card glass-panel-inner">
+                      <span className="timeline-year">{item.year}</span>
+                      <h3>{item.role}</h3>
+                      <h4 className="timeline-company">{item.company}</h4>
+                      <p>{item.description}</p>
+                      <div className="timeline-tags">
+                        {item.tags.map((tag) => (
+                          <span key={tag} className="timeline-tag">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
+
+            <section className="content-section glass-panel">
+              <h2>
+                <Briefcase size={18} /> Academic History
+              </h2>
+              <div className="education-grid">
+                <article className="education-card glass-panel-inner">
+                  <span className="degree-badge">Postgraduate</span>
+                  <h3>MSc Tech</h3>
+                  <p className="school">Manipal University</p>
+                  <p className="edu-desc">Advanced software engineering, distributed applications, and systems design.</p>
+                </article>
+                <article className="education-card glass-panel-inner">
+                  <span className="degree-badge">Graduate</span>
+                  <h3>Bachelor of Engineering</h3>
+                  <p className="school">KVG College of Engineering, Sullia</p>
+                  <p className="edu-desc">Computer Science &amp; Engineering core principles, algorithms, and logic.</p>
+                </article>
+              </div>
+            </section>
+          </>
+        )}
+      </main>
+      <Footer />
+    </>
   )
 }

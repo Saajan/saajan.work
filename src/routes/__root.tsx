@@ -1,5 +1,7 @@
 import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
 import appCss from '../styles.css?url'
+import type { ReactNode } from 'react'
+import { AmbientBackground } from '../components/AmbientBackground'
 
 export const Route = createRootRoute({
   head: () => ({
@@ -20,7 +22,14 @@ function RootDocument({ children }: { children: ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body>{children}<Scripts /></body>
+      <body>
+        <AmbientBackground />
+        <div className="app-container">
+          {children}
+        </div>
+        <Scripts />
+      </body>
     </html>
   )
 }
+
